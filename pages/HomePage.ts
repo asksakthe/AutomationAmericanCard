@@ -1,4 +1,6 @@
-import { Page } from "@playwright/test";
+import { BrowserContext, Page } from "@playwright/test";
+import { cardsPage } from "./CardsPage";
+
 
 export class homePage{
     constructor(private page:Page){}
@@ -10,11 +12,17 @@ export class homePage{
 
 
     //click to target action
-    async clikCartesAmericanExpress(){
+    async clikCartesAmericanExpress() {
         await this.page.getByRole('button', {name: 'Devenir Client'}).click()
-        console.log("Clicked the tab menu for the Cartes American Express")
         await this.page.locator("(//span[contains(text(), 'Les Cartes AMERICAN EXPRESS')])[1]").click()
-        console.log(" Successfully clicked cartes American Express ")
-        //return this
+        // const [landPage] = await Promise.all([context.waitForEvent('page'), this.page.locator("(//span[contains(text(), 'Les Cartes AMERICAN EXPRESS')])[1]").click()])
+        // //await landPage.locator("(//span[contains(text(), 'Les Cartes AMERICAN EXPRESS')])[1]").click()
+        //await landPage.locator("(//span[contains(text(), 'Les Cartes AMERICAN EXPRESS')])[1]").click()
+        // await this.page.getByRole('button', {name: 'Devenir Client'}).click()
+        // console.log("Clicked the tab menu for the Cartes American Express")
+        // await this.page.locator("(//span[contains(text(), 'Les Cartes AMERICAN EXPRESS')])[1]").click()
+        // console.log(" Successfully clicked cartes American Express ")
+        return this
+        //return new cardsPage(this.page)
     }
 }
